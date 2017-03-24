@@ -66,7 +66,13 @@
   // Generic ajax request, method must be passed in options
   SimpleAjax.prototype.request = function(url, options) {
     this.url = url
-    this.options = options
+
+    // Default options
+    this.options = Object.assign({
+      headers: Object.assign({
+        'content-type': 'application/x-www-form-urlencoded'
+      }, options.headers)
+    }, options)
 
     checkOptions(this)
     execute(this)
@@ -121,6 +127,7 @@
 
     // HTTP Request
     var xhr = new XMLHttpRequest()
+
     xhr.open(instance.options.method, instance.url)
 
     if (instance.options.headers) {
@@ -136,7 +143,10 @@
       }
     }
 
-    xhr.send(instance.options.data)
+    var str = instance.options.data ? JSON.stringify(instance.options.data) : null
+    str = str ? str.slice(1, str.length - 1).replace(/:/g, '=').replace(/"/g, '').replace(/,/g, '&') : null
+
+    xhr.send(str)
   }
 
   // Checking options passed
