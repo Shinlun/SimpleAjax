@@ -36,6 +36,8 @@ SimpleAjax.delete('url', options)
 Options
 -----------
 
+Options are passed as a json:
+
 ```
 {
   // If using .request(), specify the HTTP method
