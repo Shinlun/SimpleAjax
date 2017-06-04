@@ -68,11 +68,10 @@
     this.url = url
 
     // Default options
-    this.options = Object.assign({
-      headers: Object.assign({
-        'content-type': 'application/x-www-form-urlencoded'
-      }, options.headers)
-    }, options)
+    this.options = options && typeof options === 'object' ? options : {}
+    this.options.headers = Object.assign({
+      'content-type': 'application/x-www-form-urlencoded'
+    }, options.headers)
 
     checkOptions(this)
     execute(this)
