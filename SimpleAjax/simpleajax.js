@@ -144,7 +144,7 @@
     // Callbacks
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
-        instance.options[xhr.status === 200 ? 'success' : 'error'](xhr.responseText || xhr)
+        instance.options[xhr.status.toString().match(/^2[0-9]{2}/) ? 'success' : 'error'](xhr.responseText || xhr)
       }
     }
 
