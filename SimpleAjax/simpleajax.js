@@ -66,6 +66,7 @@
   // Generic ajax request, method must be passed in options
   SimpleAjax.prototype.request = function(url, options) {
     this.url = url
+    options = options || {}
 
     // Default options
     this.options = options && typeof options === 'object' ? options : {}
@@ -79,30 +80,35 @@
 
   // GET ajax request
   SimpleAjax.prototype.get = function (url, options) {
+    options = options || {}
     options.method = 'GET'
     this.request(url, options)
   }
 
   // POST ajax request
   SimpleAjax.prototype.post = function (url, options) {
+    options = options || {}
     options.method = 'POST'
     this.request(url, options)
   }
 
   // PUT ajax request
   SimpleAjax.prototype.put = function (url, options) {
+    options = options || {}
     options.method = 'PUT'
     this.request(url, options)
   }
 
   // PATCH ajax request
   SimpleAjax.prototype.patch= function (url, options) {
+    options = options || {}
     options.method = 'PATCH'
     this.request(url, options)
   }
 
   // DELETE ajax request
   SimpleAjax.prototype.delete = function (url, options) {
+    options = options || {}
     options.method = 'DELETE'
     this.request(url, options)
   }
@@ -171,10 +177,12 @@
     }
 
     if (!instance.options.success) {
+      instance.options.success = function() {}
       instance.warnings.push('No success callback specified')
     }
 
     if (!instance.options.error) {
+      instance.options.success = function() {}
       instance.warnings.push('No error callback specified')
     }
 

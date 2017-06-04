@@ -36,6 +36,8 @@ SimpleAjax.delete('url', options)
 Options
 -----------
 
+Options are passed as a json:
+
 ```
 {
   // If using .request(), specify the HTTP method
@@ -58,6 +60,8 @@ Options
 Examples
 ------------
 
+Basic ajax request:
+
 ```
 SimpleAjax.request('http://myapi.example.org/ressource', {
   method: 'GET',
@@ -69,6 +73,8 @@ SimpleAjax.request('http://myapi.example.org/ressource', {
   }
 })
 ```
+
+Using specific methods:
 
 ```
 SimpleAjax.post('/path/to/login.py', {
