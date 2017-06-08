@@ -70,9 +70,6 @@
 
     // Default options
     this.options = options && typeof options === 'object' ? options : {}
-    this.options.headers = Object.assign({
-      'content-type': 'application/x-www-form-urlencoded'
-    }, options.headers)
 
     checkOptions(this)
     execute(this)
@@ -167,13 +164,20 @@
     }
 
     // Warnings
+    var hasContentType = false
     if (instance.options.headers) {
       Object.keys(instance.options.headers).forEach(function (key) {
+        if (key.toLowerCase() === 'content-type') hasContentType = true
+
         if (instance.authorizedHeaders.indexOf(key.toLowerCase()) === -1) {
           delete instance.options.headers[key]
           instance.warnings.push('Unknown HTTP header: ' + key + '. Header was removed from request.')
         }
       })
+    }
+    if (!hasContentType) {
+      instance.options.headers = instance.headers ? instance.headers : {}
+      instance.options.headers['content-type'] = 'application/x-www-form-urlencoded'
     }
 
     if (!instance.options.success) {
