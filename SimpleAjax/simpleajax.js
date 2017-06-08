@@ -176,7 +176,7 @@
       })
     }
     if (!hasContentType) {
-      instance.options.headers = instance.headers ? instance.headers : {}
+      instance.options.headers = instance.options.headers ? instance.options.headers : {}
       instance.options.headers['content-type'] = 'application/x-www-form-urlencoded'
     }
 
