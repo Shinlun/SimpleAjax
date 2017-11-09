@@ -186,7 +186,7 @@
     }
 
     if (!instance.options.error) {
-      instance.options.success = function() {}
+      instance.options.error = function() {}
       instance.warnings.push('No error callback specified')
     }
 
