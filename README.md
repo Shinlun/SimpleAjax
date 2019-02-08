@@ -10,7 +10,7 @@ Installation
 ----------------
 
 Simply include the library to your project in html and you're good to go.
-```
+```html
 <script type="text/javascript" src="/path/to/simpleajax.js"></script>
 ```
 
@@ -19,13 +19,13 @@ Usage
 
 Generic ajax request syntax
 
-```
+```js
 SimpleAjax.request('url', options)
 ```
 
 You can also use `.get` `.post` `.put` `.patch` and `.delete` if you don't feel like passing the HTTP method in your options
 
-```
+```js
 SimpleAjax.get('url', options)
 SimpleAjax.post('url', options)
 SimpleAjax.put('url', options)
@@ -38,10 +38,10 @@ Options
 
 Options are passed as a json:
 
-```
+```js
 {
   // If using .request(), specify the HTTP method
-  method: 'GET' || 'POST || 'PUT' || 'PATCH' || 'DELETE',
+  method: 'GET' || 'POST' || 'PUT' || 'PATCH' || 'DELETE',
   // Headers are passed as json with header name as key
   headers: {},
   // Data are passed as json
@@ -62,7 +62,7 @@ Examples
 
 Basic ajax request:
 
-```
+```js
 SimpleAjax.request('http://myapi.example.org/ressource', {
   method: 'GET',
   success: function(response) {
@@ -76,7 +76,7 @@ SimpleAjax.request('http://myapi.example.org/ressource', {
 
 Using specific methods:
 
-```
+```js
 SimpleAjax.post('/path/to/login.py', {
   headers: {
     'Content-Type': 'application/json'
